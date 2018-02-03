@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="base-url" id="baseUrl" th:content="@{/}" charset="UTF-8"/>
+    <title>News Management System</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/footer-bottom.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div class="content">
+    <!-- Navigation -->
+    <th:block th:include="includes/navigation :: navigation"/>
+
+    <!-- Page Content -->
+    <div class="container pt-3">
+
+        <h2 th:text="${article.title}" th:href="@{|/article/${article.id}|}"></h2>
+        <div class="row">
+            <p class="col-10" th:text="|Article added : ${article.date}|"></p>
+            <a class="col-2 btn btn-primary" th:href="@{|/article/edit/${article.id}|}" th:text="|Edit|"></a>
+        </div>
+        <hr/>
+        <!-- Show text with line brakes after sing '\n' -->
+        <p th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(article.text),'\n','&lt;br /&gt;'))}"></p>
+        <hr/>
+
+        <th:block th:include="forms/comment-form :: comment-form"/>
+
+        <th:block th:each="comment : ${article.comments}">
+            <th:block th:include="includes/comment :: comments"/>
+        </th:block>
+
+    </div>
+</div>
+
+<div class="footer">
+    <!-- Footer -->
+    <th:block th:include="includes/footer :: footer"/>
+</div>
+
+
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/article-ajax.js}"></script>
+<script th:src="@{/js/comment-ajax.js}"></script>
+
+</body>
+</html>

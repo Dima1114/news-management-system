@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<th:block th:fragment="article">
+
+    <a class="h2" th:text="${article.title}" th:href="@{|/article/${article.id}|}"></a>
+    <p th:text="${article.date}"></p>
+    <!-- show the first 300 characters -->
+    <p th:text="${#strings.abbreviate(article.text,300)}"></p>
+
+</th:block>
+
+
+</body>
+</html>

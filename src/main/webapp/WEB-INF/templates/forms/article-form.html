@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<th:block th:fragment="article-form">
+
+    <div class="col-12 mt-5">
+        <h3 th:text="|Article form|" class="text-center pt-3"></h3>
+        <div th:object="${articleForm}">
+            <div class="form-group col-12" style="display: none">
+                <input type="text" class="form-control" id="id"  th:field="*{id}"/>
+            </div>
+
+            <div class="form-group col-12">
+                <label for="title" th:text="|Title|"></label>
+                <input type="text" class="form-control" id="title" placeholder="Title" th:field="*{title}"/>
+                <label class="form-control-feedback" for="title" id="for-title"></label>
+            </div>
+
+            <div class="form-group col-12">
+                <label for="text" th:text="|Article`s content|"></label>
+                <textarea class="form-control" rows="10" id="text" placeholder="Article`s content" th:field="*{text}"></textarea>
+                <label class="form-control-feedback" for="text" id="for-text"></label>
+            </div>
+
+            <div class="form-group col-6">
+                <label for="date" th:text="|Date|"></label>
+                <input type="date" class="form-control" id="date" th:field="*{date}"/>
+                <label class="form-control-feedback" for="date" id="for-date"></label>
+            </div>
+
+            <div class="form-group col-12 pb-4">
+                <div class="col-6">
+                    <button th:if="*{id}!=null" type="button" onclick="updateArticle()" class="btn btn-primary m-1" th:text="|Update Article|"></button>
+                    <!---->
+                    <button th:if="*{id}!=null" type="button" class="btn btn-danger m-1" data-toggle="modal"
+                            data-target="#deleteModal" th:text="|Delete Article|"></button>
+                    <button th:unless="*{id}!=null" type="button" onclick="updateArticle()" class="btn btn-primary m-1" th:text="|Add Article|"></button>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p th:text="|Delete this article and all comments related to it?|"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" th:text="Close"></button>
+                            <button class="btn btn-primary"
+                                    th:text="Delete" th:onclick="|removeArticle(*{id})|"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</th:block>
+
+</body>
+</html>

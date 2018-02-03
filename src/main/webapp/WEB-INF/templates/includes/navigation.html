@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<th:block th:fragment="navigation">
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}" th:text="|News|"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/article/add}" th:text="|Add article|"></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </nav>
+
+</th:block>
+
+</body>
+</html>

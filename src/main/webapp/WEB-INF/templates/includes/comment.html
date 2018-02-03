@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<th:block th:fragment="comments">
+
+    <h4 th:text="${comment.username}"></h4>
+    <p th:text="${comment.text}"></p>
+    <p><small class="text-right" th:text="${comment.date}"></small></p>
+
+</th:block>
+
+
+</body>
+</html>

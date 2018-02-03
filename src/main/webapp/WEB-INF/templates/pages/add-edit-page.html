@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="base-url" id="baseUrl" th:content="@{/}" charset="UTF-8"/>
+    <title>News Management System</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/footer-bottom.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div class="content">
+    <!-- Navigation -->
+    <th:block th:include="includes/navigation :: navigation"/>
+
+    <!-- Page Content -->
+    <div class="container pt-3">
+        <th:block th:include="forms/article-form :: article-form"/>
+    </div>
+</div>
+
+<div class="footer">
+    <!-- Footer -->
+    <th:block th:include="includes/footer :: footer"/>
+</div>
+
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/article-ajax.js}"></script>
+
+</body>
+</html>

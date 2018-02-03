@@ -1,0 +1,1 @@
+INSERT INTO articles (title, text) VALUES ('title2', 'text2')

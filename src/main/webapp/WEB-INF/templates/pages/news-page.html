@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>News Management System</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/footer-bottom.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div class="content">
+    <!-- Navigation -->
+    <th:block th:include="includes/navigation :: navigation"/>
+
+    <!-- Page Content -->
+    <div class="container pt-3">
+
+        <!-- If there is no articles -->
+        <th:block th:if="${articles.size() == 0}">
+            <div class="offset-3 col-6 mt-5">
+                <h2 class="text-danger" th:text="|Sorry, no news found|"></h2>
+            </div>
+        </th:block>
+
+        <div class="col-12 articles">
+            <th:block th:each="article : ${articles}">
+                <th:block th:include="includes/article :: article"/>
+            </th:block>
+        </div>
+
+    </div>
+</div>
+
+<div class="footer">
+    <!--Pagination include-->
+    <th:block th:include="includes/pagination :: pagination"/>
+    <!-- Footer -->
+    <th:block th:include="includes/footer :: footer"/>
+</div>
+
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
